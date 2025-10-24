@@ -128,6 +128,7 @@ class Bead:
         # The force points radially: inward if bead tries to leave, outward if it goes inside
         # lambd > 0 means bead is inside circle -> push outward (positive diri)
         # lambd < 0 means bead is outside circle -> pull inward (negative diri)
+        # F = m * a / dt^2
         forceMagnitude = self.mass * lambd / (dt * dt)
         self.force.set(diri)
         self.force.scale(forceMagnitude)
@@ -159,7 +160,7 @@ def setupScene():
     mass = 1.0
     r=0.4
     angle = 0.0
-    for i in range (numBeads):
+    for i in range(numBeads):
         mass = math.pi * r * r
         pos = Vector2(physicScene.wireCenter.x + physicScene.wireRadius * math.cos(angle),
                       physicScene.wireCenter.y + physicScene.wireRadius * math.sin(angle))
